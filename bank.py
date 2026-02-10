@@ -30,7 +30,21 @@ class SavingsAccount(BankAccount):
         super().__init__(self, customer_name, current_balance, minimum_balance)
         self.interest = interest
 
+    def apply_interest(self):
+        interest = self.current_balance * self.interest
+        self.current_balance += interest
+
 class CheckingAccount(BankAccount):
     def __init__(self, customer_name, current_balance, minimum_balance, transfer_limit):
         super().__init__(self, customer_name, current_balance, minimum_balance)
         self.transfer_limit = transfer_limit
+        self.transfers_made = 0
+
+    def transfer(self, transfer_amount):
+        if self.transfers_made >= self.transfer_limit:
+            print("Transfer limit reached.")
+            return
+        self.withdraw(transfer_amount)
+        self.transfers_made += 1
+
+
