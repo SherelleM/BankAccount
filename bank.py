@@ -25,3 +25,12 @@ class BankAccount:
         print(f"Customer Name: {self.customer_name}")
         print(f"Current Balance: {self.current_balance}")
 
+class SavingsAccount(BankAccount):
+    def __init__(self, customer_name, current_balance, minimum_balance, interest):
+        super().__init__(self, customer_name, current_balance, minimum_balance)
+        self.interest = interest
+
+class CheckingAccount(BankAccount):
+    def __init__(self, customer_name, current_balance, minimum_balance, transfer_limit):
+        super().__init__(self, customer_name, current_balance, minimum_balance)
+        self.transfer_limit = transfer_limit
